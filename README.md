@@ -1,12 +1,5 @@
 # Experiment--09-Configuring-UART-in-LPC2148-for-serial-data-transmission-
 
-Name :	NITHISHWAR S
-
-
-Roll no :212221230071
-
-
-
 ## Configuring UART in LPC2148 for serial data transmission:
 
 ## Aim: 
@@ -38,8 +31,7 @@ There are many registers involved with the UART blocks. UART0 and UART1 have a s
 UART0 Receiver Buffer Register (U0RBR): The Receiver Buffer Register consists of the top byte of the RX FIFO. This is the data that is first arrived and Bit 0 contains the oldest data. In case the received data is less than 8 bits, the remaining bits are padded with 0’s. In order to access the U0RBR register, the Divisor Latch Access bit (DLAB) in the UART0 Line Control Register (U0LCR) must be set to 0. With reference to the user manual, it is advised that the U0LSR register is read first and then the U0RBR register is read.
 UART0 Transmit Holding Register (U0THR): The Transmit Holding Register consists of the top byte of the TX FIFO i.e. the oldest data. Bit 0 (LSB) is the first data to be transmitted. In order to access the U0THR register, the Divisor Latch Access Bit (DLAB) bit in the UART0 Line Control Register (U0LCR) must be made zero.
 UART0 Divisor Latch Registers (U0DLL and U0DLM): The Divisor Latch Registers determine the baud rate of the UART0. The Divisor Latch is a part of the Baud Rate Generator. The U0DLL and U0DLM registers contains the lower and higher 8 – bits of the divisor and together they form the 16 – bit divisor value. Since it contains the divisor value, the U0DLL cannot contain 0x00 as division by zero is invalid. Hence, the minimum value for the U0DLM:U0DLL combination is 0x00:0x01. In order to access the Divisor Latch Registers, the Divisor Latch Access Bit (DLAB) bit in the UART0 Line Control Register (U0LCR) must be set to 1.
-UART0 Fractional Divider Register (U0FDR): The Fractional Divider Register contains the bits that control the prescale for the baud rate generator. U0FDR contains the divisor and multiplier values for prescaling. Both the divisor (DIVADDVAL) and multiplier (MULVAL) values are stored as 4 – bit values. Bit 0 to Bit 3 in U0FDR contains the pre – scaler divisor value for baud rate generation. For the baud rate generator to have an impact on the baud rate of the UART, the divisor value must not be 0. Bit 4 to bit 7 in U0FDR contains the pre – scaler multiplier value. For proper working of the UART0, the value in multiplier must be greater than or equal to 1. This is also applicable even if the baud rate generator is not used.
-UART0 Interrupt Enable Register (U0IER): The Interrupt Enable Register is used to enable or disable the interrupts corresponding to UART0. Bit 0 is for RBR Interrupt, Bit 1 is for THRE interrupt, Bit 2 is for RX Line Status Interrupt, Bit 8 is for End of Auto – baud interrupt and Bit 9 is for Auto – baud Time out interrupt. When a bit is 0, the interrupt is disabled and when the bit is 1, the interrupt is enabled.
+UART0 Fractional Divider Register (U0FDR): The Fractional Divider Register contains the bits that control the prescale for the baud rate generator. U0FDR contains the divisor and multiplier values for prescaling. Both the divisor (DIVADDVAL) and multiplier (MULVAL) values are stored as 4 – bit values. Bit 0 to Bit 3 in U0FDR contains the pre – scaler divisor value for baud rate generation. 
 UART0 Interrupt Identification Register (U0IIR): The Interrupt Identification Register is used to provide the code for priority and status of the pending interrupt.
 
 UART0 FIFO Control Register (U0FCR): The FIFO Control Register controls the operation of the RX and TX FIFOs in UART0. Bit 0 is used to enable or disable the FIFO. Bit 1 is used to reset the RX FIFO. Bit 2 is used to reset the TX FIFO. Bits 6 and 7 are used to control when the interrupt must occur i.e. after how many receiver characters.
@@ -78,6 +70,9 @@ int main (void)  {
 ```
 
 ## Output screen shots :
+![image](https://user-images.githubusercontent.com/94164665/204009708-f299686c-f3e2-451b-8269-0bb63d106b96.png)
+## Layout Circuit Diagram:
+![image](https://user-images.githubusercontent.com/94164665/204009871-bafa3b21-6a46-405a-95f8-19c6dcf7730a.png)
 
 
 ## Result :
